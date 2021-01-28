@@ -1,4 +1,4 @@
-package com.campagna.app.product.controllers;
+package com.campagna.app.product.resource;
 
 import java.util.List;
 
@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.campagna.app.product.endpoints.ProductEndpoint;
+import com.campagna.app.product.endpoint.ProductEndpoint;
 import com.campagna.app.product.models.entity.Product;
 import com.campagna.app.product.models.service.ProductService;
 
 @RestController
 @RequestMapping(value = ProductEndpoint.PRODUCT)
-public class ProductController implements ProductEndpoint {
+public class ProductResource implements ProductEndpoint {
 
 	private ProductService productService;
 	
 	@Autowired
-	public ProductController(ProductService productService) {
+	public ProductResource(ProductService productService) {
 		this.productService = productService;
 	}
 

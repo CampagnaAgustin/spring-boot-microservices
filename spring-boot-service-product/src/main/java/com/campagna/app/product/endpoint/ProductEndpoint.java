@@ -1,4 +1,4 @@
-package com.campagna.app.product.endpoints;
+package com.campagna.app.product.endpoint;
 
 import java.util.List;
 
