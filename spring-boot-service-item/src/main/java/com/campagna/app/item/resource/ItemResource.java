@@ -17,13 +17,9 @@ import com.campagna.app.item.models.service.ItemService;
 @RequestMapping(value = ItemEndpoint.ITEM)
 public class ItemResource implements ItemEndpoint {
 	
-	@Qualifier("itemServiceFeign")
-	private final ItemService itemService;
-
 	@Autowired
-	public ItemResource(ItemService itemService) {
-		this.itemService = itemService;
-	}
+	@Qualifier("itemServiceFeign")
+	private ItemService itemService;
 
 	@GetMapping(value = LIST)
 	public List<Item> list(){
@@ -31,8 +27,8 @@ public class ItemResource implements ItemEndpoint {
 	}
 	
 	@GetMapping(value = DETAIL)
-	public Item detail(@PathVariable("id") Long id, @PathVariable("cuantity") Integer cuantity) {
-		return itemService.findById(id, cuantity);
+	public Item detail(@PathVariable("id") Long id, @PathVariable("quantity") Integer quantity) {
+		return itemService.findById(id, quantity);
 	}
 	
 }

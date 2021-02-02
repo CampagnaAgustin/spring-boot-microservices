@@ -14,7 +14,7 @@ import com.campagna.app.item.models.Item;
 import com.campagna.app.item.models.Product;
 import com.campagna.app.item.models.service.ItemService;
 
-@Service
+@Service("itemServiceImpl")
 public class ItemServiceImpl implements ItemService {
 
 	@Autowired
@@ -22,7 +22,7 @@ public class ItemServiceImpl implements ItemService {
 	
 	@Override
 	public List<Item> findAll() {
-		List<Product> products = Arrays.asList(restClient.getForObject("http://localhost:8080/product/list", Product[].class));
+		List<Product> products = Arrays.asList(restClient.getForObject("http://product-service/product/list", Product[].class));
 		return products.stream().map(p -> new Item(p, 1)).collect(Collectors.toList());
 	}
 
@@ -30,7 +30,7 @@ public class ItemServiceImpl implements ItemService {
 	public Item findById(Long id, Integer quantity) {
 		Map<String, String> pathVariables = new HashMap<String, String>();
 		pathVariables.put("id",  id.toString());
-		Product product = restClient.getForObject("http://localhost:8080/product/{id}", Product.class, pathVariables);
+		Product product = restClient.getForObject("http://product-service/product/{id}", Product.class, pathVariables);
 		return new Item(product, quantity);
 	}
 

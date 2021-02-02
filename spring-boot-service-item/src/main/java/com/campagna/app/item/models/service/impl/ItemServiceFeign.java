@@ -12,7 +12,6 @@ import com.campagna.app.item.models.Item;
 import com.campagna.app.item.models.service.ItemService;
 
 @Service("itemServiceFeign")
-@Primary
 public class ItemServiceFeign implements ItemService {
 
 	private final ProductRestClient feignClient;

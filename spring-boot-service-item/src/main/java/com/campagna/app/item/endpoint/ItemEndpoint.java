@@ -15,6 +15,6 @@ public interface ItemEndpoint {
 	
 	List<Item> list();
 	
-	Item detail(Long id, Integer cuantity);
+	Item detail(Long id, Integer quantity);
 
 }
